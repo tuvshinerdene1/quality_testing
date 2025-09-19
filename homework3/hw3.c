@@ -1,5 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+void print(int *arr, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        printf("arr[%d] = %d , ", i, arr[i]);
+    }
+    printf("\n");
+}
 void swap(int *a, int *b)
 {
     int temp = *a;
@@ -43,13 +51,24 @@ void sortBySelection(int *arr, int size, int (*compare)(int *, int *))
         }
         swap(&arr[i], &arr[current]);
     }
+    printf("Sorted!\n");
 }
 void sortByInsertion(int *arr, int size, int (*compare)(int *, int *))
 {
+    for (int i = 1; i < size; i++)
+    {
+        int j = i;
+        while (j > 0 && compare(&arr[j], &arr[j - 1]))
+        {
+            swap(&arr[j], &arr[j - 1]);
+            j -= 1;
+        }
+    }
+    printf("Sorted!\n");
 }
 int main()
 {
-    int size;
+    int size, choice, choice1;
     printf("Size = ");
     scanf("%d", &size);
     int *arr = (int *)malloc(size * (sizeof(int)));
@@ -58,10 +77,57 @@ int main()
         printf("arr[%d] = ", i);
         scanf("%d", &arr[i]);
     }
-    sortBySelection(arr, size, compare_desc);
-    for (int i = 0; i < size; i++)
+    while (1)
     {
-        printf("arr[%d] = %d\n", i, arr[i]);
+        printf("1.print 2.sort by selection 3. sort by insertion 4.exit\n");
+        scanf("%d", &choice);
+        if (choice == 1)
+        {
+            print(arr, size);
+        }
+        else if (choice == 2)
+        {
+            printf("1. ascending order 2. descending order\n");
+            scanf("%d", &choice1);
+            if (choice == 1)
+            {
+                sortBySelection(arr, size, compare_asc);
+            }
+            else if (choice == 2)
+            {
+                sortBySelection(arr, size, compare_desc);
+            }
+            else
+            {
+                printf("Invalid input\n");
+            }
+        }
+
+        else if (choice == 3)
+        {
+            printf("1. ascending order 2. descending order\n");
+            scanf("%d", &choice1);
+            if (choice == 1)
+            {
+                sortByInsertion(arr, size, compare_asc);
+            }
+            else if (choice == 2)
+            {
+                sortByInsertion(arr, size, compare_desc);
+            }
+            else
+            {
+                printf("Invalid input\n");
+            }
+        }
+        else if (choice == 4)
+        {
+            break;
+        }
+        else
+        {
+            printf("Invalid input\n");
+        }
     }
     return 0;
 }
