@@ -89,11 +89,11 @@ int main()
         {
             printf("1. ascending order 2. descending order\n");
             scanf("%d", &choice1);
-            if (choice == 1)
+            if (choice1 == 1)
             {
                 sortBySelection(arr, size, compare_asc);
             }
-            else if (choice == 2)
+            else if (choice1 == 2)
             {
                 sortBySelection(arr, size, compare_desc);
             }
@@ -107,11 +107,11 @@ int main()
         {
             printf("1. ascending order 2. descending order\n");
             scanf("%d", &choice1);
-            if (choice == 1)
+            if (choice1 == 1)
             {
                 sortByInsertion(arr, size, compare_asc);
             }
-            else if (choice == 2)
+            else if (choice1 == 2)
             {
                 sortByInsertion(arr, size, compare_desc);
             }
