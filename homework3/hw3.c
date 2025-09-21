@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 #include <stdlib.h>
 void print(int *arr, int size)
 {
@@ -68,6 +69,7 @@ void sortByInsertion(int *arr, int size, int (*compare)(int *, int *))
 }
 int main()
 {
+    clock_t begin = clock();
     int size, choice, choice1;
     printf("Size = ");
     scanf("%d", &size);
@@ -129,5 +131,9 @@ int main()
             printf("Invalid input\n");
         }
     }
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("runtime = %f\n", time_spent);
+    free(arr);
     return 0;
 }
