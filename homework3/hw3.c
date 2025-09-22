@@ -40,6 +40,8 @@ int compare_desc(int *a, int *b)
 }
 void sortBySelection(int *arr, int size, int (*compare)(int *, int *))
 {
+    clock_t begin = clock();
+
     for (int i = 0; i < size - 1; i++)
     {
         int current = i;
@@ -52,10 +54,13 @@ void sortBySelection(int *arr, int size, int (*compare)(int *, int *))
         }
         swap(&arr[i], &arr[current]);
     }
-    printf("Sorted!\n");
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Sorted in %f\n", time_spent);
 }
 void sortByInsertion(int *arr, int size, int (*compare)(int *, int *))
 {
+    clock_t begin = clock();
     for (int i = 1; i < size; i++)
     {
         int j = i;
@@ -65,7 +70,9 @@ void sortByInsertion(int *arr, int size, int (*compare)(int *, int *))
             j -= 1;
         }
     }
-    printf("Sorted!\n");
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Sorted in %f\n", time_spent);
 }
 int main()
 {
