@@ -84,7 +84,7 @@ def main():
     }
     keywords = {
         'main', 'int', 'scanf', 'printf', 'return', 'for', 'while', 'if',
-        'else', 'struct', 'enum', 'typedef', 'cout', 'cin', 'continue', 'break'
+        'else', 'struct', 'enum', 'typedef', 'cout', 'cin', 'continue', 'break', 'endl', 'namespace','using'
     }
     token_counts = Counter()
     operand_counts = Counter()
